@@ -1,11 +1,11 @@
 // Uradori - 設定画面
 // 保存する値はAPIのモデルID、画面に出すのは読みやすい表記
 const MODELS = [
-  { id: 'gpt-5.6-luna', name: 'GPT-5.6 Luna', tag: '低コスト・既定' },
-  { id: 'gpt-5.6-sol', name: 'GPT-5.6 Sol', tag: '高精度' },
+  { id: 'gpt-6-luna', name: 'GPT-6 Luna', tag: '低コスト・既定' },
+  { id: 'gpt-6-sol', name: 'GPT-6 Sol', tag: '高精度' },
   { id: 'gpt-6-astra', name: 'GPT-6 Astra', tag: '最高性能' },
 ];
-const DEFAULT_MODEL = 'gpt-5.6-luna';
+const DEFAULT_MODEL = 'gpt-6-luna';
 
 const $key = document.getElementById('key');
 const $peek = document.getElementById('peek');

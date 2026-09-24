@@ -3,7 +3,7 @@
 (function () {
   'use strict';
 
-  const DEFAULT_MODEL = 'gpt-5.6-luna';
+  const DEFAULT_MODEL = 'gpt-6-luna';
   const MAX_IMAGES = 3;
   const PANEL_MAX_WIDTH = 640;
 
