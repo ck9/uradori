@@ -1,0 +1,88 @@
+/* Uradori - 設定画面。ブラウザがダークテーマでも常にライト表示にする */
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg2: #f1f6fd;
+  --fg: #0f1419;
+  --muted: #6b7785;
+  --line: #e3e8ef;
+  --card: #ffffff;
+  --accent: #1d88f5;
+  --accent2: #5aa9fb;
+  --sel-bg: #eff6ff;
+}
+* { box-sizing: border-box; }
+body {
+  width: 360px;
+  margin: 0;
+  padding: 0 0 20px;
+  background: linear-gradient(180deg, var(--bg2) 0%, var(--bg) 190px);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.head { display: flex; align-items: center; gap: 12px; padding: 18px 18px 4px; }
+.tile {
+  flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px;
+  background: #fff; border-radius: 13px;
+  box-shadow: 0 2px 8px rgba(15, 20, 25, 0.14);
+}
+.tile svg { width: 30px; height: 30px; }
+.titles { display: flex; flex-direction: column; }
+h1 { margin: 0; font-size: 20px; font-weight: 800; letter-spacing: .01em; }
+.sub { font-size: 13px; color: var(--muted); }
+
+main { padding: 12px 18px 0; }
+.label { display: block; margin: 18px 0 8px; font-size: 15px; font-weight: 800; }
+
+.field {
+  display: flex; align-items: center; gap: 4px;
+  padding: 4px 6px 4px 14px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+}
+.field:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(29,136,245,.16); }
+#key {
+  flex: 1 1 auto; min-width: 0;
+  padding: 11px 0; border: 0; background: transparent; color: var(--fg);
+  font-size: 14px; letter-spacing: .02em;
+}
+#key:focus { outline: none; }
+#key[type="text"] { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; }
+.peek {
+  flex: 0 0 auto; padding: 8px 10px; border: 0; border-radius: 9px;
+  background: transparent; color: var(--accent);
+  font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer;
+}
+.peek:hover { background: rgba(29,136,245,.10); }
+
+.models { display: flex; flex-direction: column; gap: 9px; }
+.model {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 15px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px; cursor: pointer;
+  transition: border-color .12s, background-color .12s;
+}
+.model:hover { border-color: #b9d6f7; }
+.model input { width: 18px; height: 18px; margin: 0; flex: 0 0 auto; accent-color: var(--accent); }
+.model .name { font-size: 15px; font-weight: 800; }
+.model .tag { margin-left: auto; font-size: 13px; color: var(--muted); white-space: nowrap; }
+.model:has(input:checked) {
+  border-color: var(--accent); border-width: 2px; padding: 13px 14px; background: var(--sel-bg);
+}
+
+.save {
+  width: 100%; margin-top: 22px; padding: 14px; border: 0; border-radius: 9999px;
+  background: linear-gradient(90deg, #2f80f0 0%, #5aa2fb 100%);
+  color: #fff; font-family: inherit; font-size: 17px; font-weight: 800; cursor: pointer;
+  box-shadow: 0 4px 14px rgba(47,128,240,.30);
+}
+.save:hover { filter: brightness(1.05); }
+.save:active { transform: translateY(1px); }
+
+.status { margin: 9px 0 0; min-height: 18px; font-size: 13px; font-weight: 700; text-align: center; color: #00975f; }
+.status[data-err="1"] { color: #e21d29; }
+.note { margin: 14px 0 0; font-size: 12.5px; line-height: 1.6; color: var(--muted); }

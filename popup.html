@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>Uradori</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="head">
+    <span class="tile" aria-hidden="true">
+      <svg viewBox="0 0 24 24">
+        <circle cx="10.4" cy="10.4" r="7.6" fill="#1d9bf0" />
+        <path d="M6.9 10.6l2.5 2.5 4.4-4.8" fill="none" stroke="#fff" stroke-width="2.1"
+              stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M15.9 15.9l4.8 4.8" fill="none" stroke="#1d9bf0" stroke-width="2.7" stroke-linecap="round" />
+      </svg>
+    </span>
+    <span class="titles">
+      <h1>Uradori</h1>
+      <span class="sub">投稿を裏取りする設定</span>
+    </span>
+  </header>
+
+  <main>
+    <label class="label" for="key">OpenAI APIキー</label>
+    <div class="field">
+      <input id="key" type="password" placeholder="sk-..." autocomplete="off" spellcheck="false" />
+      <button id="peek" type="button" class="peek" aria-label="キーを表示">表示</button>
+    </div>
+
+    <span class="label">使用モデル</span>
+    <div class="models" id="models"></div>
+
+    <button id="save" type="button" class="save">設定を保存</button>
+    <p id="status" class="status" role="status"></p>
+
+    <p class="note">APIキーはこのChromeプロファイルの拡張機能ストレージに保存され、OpenAI APIへの送信にのみ使われます。</p>
+  </main>
+</body>
+<script src="popup.js"></script>
+</html>
