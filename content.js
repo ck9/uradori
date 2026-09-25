@@ -175,6 +175,26 @@
     return n;
   }
 
+  // Web検索の引用で本文に混ざる [タイトル](URL) を、生の文字列ではなくリンクとして出す
+  const MD_LINK = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  function richText(tag, cls, text) {
+    const n = el(tag, cls);
+    const s = String(text);
+    let last = 0;
+    for (const m of s.matchAll(MD_LINK)) {
+      n.appendChild(document.createTextNode(s.slice(last, m.index)));
+      const a = el('a', 'urd-inline-link', m[1]);
+      a.href = m[2];
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.title = m[2];
+      n.appendChild(a);
+      last = m.index + m[0].length;
+    }
+    n.appendChild(document.createTextNode(s.slice(last)));
+    return n;
+  }
+
   function head(title, sub) {
     const h = el('div', 'urd-head');
     const t = el('span', 'urd-head-title', title);
@@ -222,14 +242,14 @@
     const d = el('div', 'urd-detail');
     if (item.explanation) {
       d.appendChild(el('div', 'urd-label', '説明'));
-      d.appendChild(el('div', 'urd-text', item.explanation));
+      d.appendChild(richText('div', 'urd-text', item.explanation));
     }
 
     const unknowns = toList(item.unverifiable);
     if (unknowns.length) {
       d.appendChild(el('div', 'urd-label', 'この情報だけでは判断できないこと'));
       const ul = el('ul', 'urd-unknown');
-      unknowns.forEach((u) => ul.appendChild(el('li', null, u)));
+      unknowns.forEach((u) => ul.appendChild(richText('li', null, u)));
       d.appendChild(ul);
     }
 
